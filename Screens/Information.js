@@ -1,36 +1,31 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {Input, Button, Card} from 'native-base';
+import {View, Text, StyleSheet} from 'react-native';
+import {Card} from 'native-base';
 
 export default class Information extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {input: '', datasource: []};
-  }
-
   render() {
     const data = this.props.route.params.storeData;
-    console.log('navi', data);
+
     return (
-      <View style={{padding: 5, backgroundColor: 'white', height: '100%'}}>
-        <Card>
-          <Text style={{fontWeight: 'bold'}}>
+      <View style={styles.mainView}>
+        <Card style={styles.cardStyle}>
+          <Text style={styles.titleText}>
             Name :
-            <Text style={{fontWeight: 'normal', paddingLeft: 5}}>
-              {data.name}
+            <Text style={styles.commonText}>
+              {''} {data.name}
             </Text>
           </Text>
 
-          <Text style={{fontWeight: 'bold'}}>
+          <Text style={styles.titleText}>
             Nasa_jpl_url :
-            <Text style={{fontWeight: 'normal', paddingLeft: 5}}>
-              {data.nasa_jpl_url}
+            <Text style={styles.commonText}>
+              {''} {data.nasa_jpl_url}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'bold'}}>
+          <Text style={styles.titleText}>
             Is_potentially_hazardous_asteroid :
-            <Text style={{fontWeight: 'normal', paddingLeft: 5}}>
-              {data.is_potentially_hazardous_asteroid.toString()}
+            <Text style={styles.commonText}>
+              {''} {data.is_potentially_hazardous_asteroid.toString()}
             </Text>
           </Text>
         </Card>
@@ -38,3 +33,17 @@ export default class Information extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  mainView: {padding: 15, backgroundColor: 'white', height: '100%'},
+  cardStyle: {
+    margin: 10,
+    padding: 10,
+    elevation: 7,
+  },
+  titleText: {fontWeight: 'bold'},
+  commonText: {
+    fontWeight: 'normal',
+    padding: 2,
+  },
+});
